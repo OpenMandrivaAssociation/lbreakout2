@@ -71,7 +71,7 @@ install -d $RPM_BUILD_ROOT%{_localstatedir}/games
 
 mv $RPM_BUILD_ROOT%{_gamesdatadir}/locale $RPM_BUILD_ROOT%{_datadir}
 
-tar xjC $RPM_BUILD_ROOT%{_datadir}/games/%{name}/levels -f %SOURCE1
+tar xzC $RPM_BUILD_ROOT%{_datadir}/games/%{name}/levels -f %SOURCE1
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF

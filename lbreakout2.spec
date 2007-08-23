@@ -3,7 +3,7 @@
 %define beta 		7
 %define levelsets	20070610
 %if %beta
-%define release		%mkrel 0.beta%{beta}.1
+%define release		%mkrel 0.beta%{beta}.2
 %else
 %define release		%mkrel 1
 %endif
@@ -78,7 +78,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=LBreakout 2
-Comment=%{summary}
+Comment=Breakout-style arcade game
 Exec=%_gamesbindir/%{name}
 Icon=%{name}
 Terminal=false

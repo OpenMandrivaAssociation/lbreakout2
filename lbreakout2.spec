@@ -76,7 +76,6 @@ tar xzC $RPM_BUILD_ROOT%{_datadir}/games/%{name}/levels -f %SOURCE1
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=LBreakout 2
 Comment=Breakout-style arcade game
 Exec=%_gamesbindir/%{name}

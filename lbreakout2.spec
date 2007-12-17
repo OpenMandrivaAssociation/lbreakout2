@@ -35,7 +35,6 @@ BuildRequires:	texinfo
 %if %__fetch_levels
 BuildRequires:	wget
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 LBreakout is a classical Breakout game and this means (if you like Breakout ;-)

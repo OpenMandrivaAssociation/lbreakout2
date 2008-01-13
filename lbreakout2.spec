@@ -5,7 +5,7 @@
 %if %beta
 %define release		%mkrel 0.beta%{beta}.2
 %else
-%define release		%mkrel 1
+%define release		%mkrel 2
 %endif
 
 # getting latest levelset ?

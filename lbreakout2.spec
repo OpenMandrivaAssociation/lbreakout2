@@ -61,12 +61,12 @@ rm -f levelsets.tar.gz
 %build
 %configure	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir} \
-		--localstatedir=%{_localstatedir}/games
+		--localstatedir=%{_localstatedir}/lib/games
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_localstatedir}/games
+install -d $RPM_BUILD_ROOT%{_localstatedir}/lib/games
 %{makeinstall_std}
 
 mv $RPM_BUILD_ROOT%{_gamesdatadir}/locale $RPM_BUILD_ROOT%{_datadir}
@@ -109,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README TODO
 # %attr(2755, root, games) 
 %{_gamesbindir}/*
-%attr(664, root, games) %{_localstatedir}/games/*
+%attr(664, root, games) %{_localstatedir}/lib/games/*
 %{_gamesdatadir}/%{name}
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/16x16/apps/%{name}.png

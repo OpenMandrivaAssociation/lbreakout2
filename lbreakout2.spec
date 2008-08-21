@@ -3,9 +3,9 @@
 %define beta 		7
 %define levelsets	20070610
 %if %beta
-%define release		%mkrel 0.beta%{beta}.2
+%define release		%mkrel 0.beta%{beta}.3
 %else
-%define release		%mkrel 2
+%define release		%mkrel 3
 %endif
 
 # getting latest levelset ?
@@ -59,8 +59,11 @@ rm -f levelsets.tar.gz
 %endif
 
 %build
-%configure	--bindir=%{_gamesbindir} \
+%configure2_5x	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir} \
+		--with-libiconv-prefix=%{_prefix} \
+		--without-included-gettext \
+		--with-libintl-prefix=%{_prefix} \
 		--localstatedir=%{_localstatedir}/lib/games
 %make
 

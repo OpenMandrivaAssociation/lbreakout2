@@ -2,10 +2,11 @@
 %define	version		2.6
 %define beta 		7
 %define levelsets	20070610
+%define rel		4
 %if %beta
-%define release		%mkrel 0.beta%{beta}.3
+%define release		%mkrel -c beta%{beta} %rel
 %else
-%define release		%mkrel 3
+%define release		%mkrel %rel
 %endif
 
 # getting latest levelset ?
@@ -60,7 +61,6 @@ rm -f levelsets.tar.gz
 
 %build
 %configure2_5x	--bindir=%{_gamesbindir} \
-		--datadir=%{_gamesdatadir} \
 		--with-libiconv-prefix=%{_prefix} \
 		--without-included-gettext \
 		--with-libintl-prefix=%{_prefix} \
@@ -72,9 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_localstatedir}/lib/games
 %{makeinstall_std}
 
-mv $RPM_BUILD_ROOT%{_gamesdatadir}/locale $RPM_BUILD_ROOT%{_datadir}
-
-tar xzC $RPM_BUILD_ROOT%{_datadir}/games/%{name}/levels -f %SOURCE1
+tar xzC $RPM_BUILD_ROOT%{_datadir}/%{name}/levels -f %SOURCE1
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -114,10 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README TODO
-# %attr(2755, root, games) 
 %{_gamesbindir}/*
 %attr(664, root, games) %{_localstatedir}/lib/games/*
-%{_gamesdatadir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/applications/*
 %{_iconsdir}/hicolor/16x16/apps/%{name}.png
 %{_iconsdir}/hicolor/32x32/apps/%{name}.png

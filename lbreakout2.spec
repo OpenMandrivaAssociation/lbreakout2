@@ -2,7 +2,7 @@
 %define	version		2.6
 %define beta 		7
 %define levelsets	20070610
-%define rel		5
+%define rel		6
 %if %beta
 %define release		%mkrel -c beta%{beta} %rel
 %else
@@ -27,6 +27,7 @@ Source1:	http://ftp1.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.tar.g
 Source5:	%{name}-16.png
 Source6:	%{name}-32.png
 Source7:	%{name}-48.png
+Source8: 	fr_ascii.po
 License:	GPLv2
 Group:		Games/Arcade
 BuildRequires:	SDL_mixer-devel
@@ -60,6 +61,10 @@ rm -f levelsets.tar.gz
 %endif
 
 %build
+# replace french translation file because lbreakout2 doesn't like accented letters
+cp -f %SOURCE8 po/fr.po 
+msgfmt po/fr.po -o po/fr.gmo
+
 %configure2_5x	--bindir=%{_gamesbindir} \
 		--with-libiconv-prefix=%{_prefix} \
 		--without-included-gettext \

@@ -2,7 +2,7 @@
 %define	version		2.6
 %define beta 		7
 %define levelsets	20070610
-%define rel		6
+%define rel		7
 %if %beta
 %define release		%mkrel -c beta%{beta} %rel
 %else

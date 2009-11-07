@@ -1,8 +1,8 @@
 %define	name		lbreakout2
 %define	version		2.6
-%define beta 		7
-%define levelsets	20070610
-%define rel		7
+%define beta 		0
+%define levelsets	20091026
+%define rel		1
 %if %beta
 %define release		%mkrel -c beta%{beta} %rel
 %else
@@ -124,3 +124,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/16x16/apps/%{name}.png
 %{_iconsdir}/hicolor/32x32/apps/%{name}.png
 %{_iconsdir}/hicolor/48x48/apps/%{name}.png
+%{_iconsdir}/lbreakout48.gif

@@ -1,5 +1,5 @@
 %define	name		lbreakout2
-%define	version		2.6
+%define	version		2.6.1
 %define beta 		0
 %define levelsets	20091026
 %define rel		1

@@ -1,7 +1,7 @@
 %define	name		lbreakout2
-%define	version		2.6.1
+%define	version		2.6.2
 %define beta 		0
-%define levelsets	20091026
+%define levelsets	20100920
 %define rel		1
 %if %beta
 %define release		%mkrel -c beta%{beta} %rel
@@ -19,19 +19,17 @@ Version:	%{version}
 Release:	%{release}
 Url:		http://lgames.sourceforge.net/
 %if %beta
-Source0:	http://ftp1.sourceforge.net/lgames/%{name}-%{version}beta-%{beta}.tar.gz
+Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}beta-%{beta}.tar.gz
 %else
-Source0:	http://ftp1.sourceforge.net/lgames/%{name}-%{version}.tar.gz
+Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.gz
 %endif
-Source1:	http://ftp1.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.tar.gz
+Source1:	http://download.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.tar.gz
 Source5:	%{name}-16.png
 Source6:	%{name}-32.png
 Source7:	%{name}-48.png
-Source8: 	fr_ascii.po
 License:	GPLv2
 Group:		Games/Arcade
 BuildRequires:	SDL_mixer-devel
-BuildRequires:	esound-devel
 BuildRequires:	libpng-devel
 BuildRequires:	texinfo
 %if %__fetch_levels
@@ -61,10 +59,6 @@ rm -f levelsets.tar.gz
 %endif
 
 %build
-# replace french translation file because lbreakout2 doesn't like accented letters
-cp -f %SOURCE8 po/fr.po 
-msgfmt po/fr.po -o po/fr.gmo
-
 %configure2_5x	--bindir=%{_gamesbindir} \
 		--with-libiconv-prefix=%{_prefix} \
 		--without-included-gettext \

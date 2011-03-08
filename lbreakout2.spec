@@ -1,5 +1,5 @@
 %define	name		lbreakout2
-%define	version		2.6.2
+%define	version		2.6.3
 %define beta 		0
 %define levelsets	20100920
 %define rel		1
@@ -21,7 +21,7 @@ Url:		http://lgames.sourceforge.net/
 %if %beta
 Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}beta-%{beta}.tar.gz
 %else
-Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.gz
+Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.xz
 %endif
 Source1:	http://download.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.tar.gz
 Source5:	%{name}-16.png

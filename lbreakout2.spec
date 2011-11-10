@@ -2,11 +2,11 @@
 %define	version		2.6.3
 %define beta 		0
 %define levelsets	20100920
-%define rel		3
-%if %beta
-%define release		%mkrel -c beta%{beta} %rel
+%define rel		4
+%if %{beta}
+%define release		%mkrel -c beta%{beta} %{rel}
 %else
-%define release		%mkrel %rel
+%define release		%mkrel %{rel}
 %endif
 
 # getting latest levelset ?
@@ -18,7 +18,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Url:		http://lgames.sourceforge.net/
-%if %beta
+%if %{beta}
 Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}beta-%{beta}.tar.gz
 %else
 Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.xz
@@ -32,7 +32,7 @@ Group:		Games/Arcade
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	libpng-devel
 BuildRequires:	texinfo
-%if %__fetch_levels
+%if %{__fetch_levels}
 BuildRequires:	wget
 %endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -44,7 +44,7 @@ If you never ever played such a game you can check out the manual for more
 information, take a look at the screenshots and last but not least... play it!
 
 %prep
-%if %beta
+%if %{beta}
 %setup -q -n %{name}-%{version}beta-%{beta}
 %else
 %setup -q
@@ -67,34 +67,38 @@ rm -f levelsets.tar.gz
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_localstatedir}/lib/games
+%__rm -rf %{buildroot}
+%__install -d %{buildroot}%{_localstatedir}/lib/games
 %{makeinstall_std}
 
-tar xzC $RPM_BUILD_ROOT%{_datadir}/%{name}/levels -f %SOURCE1
+tar xzC %{buildroot}%{_datadir}/%{name}/levels -f %{SOURCE1}
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+%__mkdir_p %{buildroot}%{_datadir}/applications
+%__cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=LBreakout 2
 Comment=Breakout-style arcade game
-Exec=%_gamesbindir/%{name}
+Exec=%{_gamesbindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
 Categories=Game;ArcadeGame;
 EOF
 
-install -D -m644 %SOURCE5 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png
-install -D -m644 %SOURCE6 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-install -D -m644 %SOURCE7 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+%__install -D -m644 %{SOURCE5} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+%__install -D -m644 %{SOURCE6} %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+%__install -D -m644 %{SOURCE7} %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
-rm -rf $RPM_BUILD_ROOT/usr/doc # those docs are not wanted
+# those docs are not wanted
+%__rm -rf %{buildroot}/usr/doc
+
+# remove ugly default desktop file, use our own
+%__rm -rf %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post
@@ -111,10 +115,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README TODO
-%{_gamesbindir}/*
+%{_gamesbindir}/%{name}
+%{_gamesbindir}/%{name}server
 %attr(664, root, games) %{_localstatedir}/lib/games/*
 %{_datadir}/%{name}
-%{_datadir}/applications/*
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/hicolor/16x16/apps/%{name}.png
 %{_iconsdir}/hicolor/32x32/apps/%{name}.png
 %{_iconsdir}/hicolor/48x48/apps/%{name}.png

@@ -1,6 +1,3 @@
 sources:
-  "lbreakout2-16.png:"	2d92d8900e54255e7619dfa5ddf366fff7bc123b
-  "lbreakout2-2.6.3.tar.xz:"	c6757a29057e425a3265a5ee299a16b50b54850b
-  "lbreakout2-32.png:"	0bce16498a3311f30f49cca46f8eb3ce87239156
-  "lbreakout2-48.png:"	5f66edbfc2da8fa59e4297c9f60f8172dd3cbd68
-  "lbreakout2-levelsets-20100920.tar.gz:"	e668779921c8c41d491c0304b35df4ae472e8166
+  "lbreakout2-2.6.3.tar.xz": c6757a29057e425a3265a5ee299a16b50b54850b
+  "lbreakout2-levelsets-20100920.tar.gz": e668779921c8c41d491c0304b35df4ae472e8166

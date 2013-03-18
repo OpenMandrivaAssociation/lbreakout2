@@ -1,20 +1,20 @@
-%define levelsets	20100920
+%define levelsets	20120815
 
 # getting latest levelset ?
 %bcond_with	fetch_levels
 
 Summary:	Breakout-style arcade game
 Name:		lbreakout2
-Version:	2.6.3
-Release:	5
+Version:	2.6.4
+Release:	1
+License:	GPLv2
+Group:		Games/Arcade
 Url:		http://lgames.sourceforge.net/
-Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.xz
+Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.gz
 Source1:	http://download.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.tar.gz
 Source5:	%{name}-16.png
 Source6:	%{name}-32.png
 Source7:	%{name}-48.png
-License:	GPLv2
-Group:		Games/Arcade
 BuildRequires:	pkgconfig(SDL_mixer)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	texinfo
@@ -77,9 +77,9 @@ rm -r %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files -f %{name}.lang
 %doc README TODO
-%{_gamesbindir}/%{name}
-%{_gamesbindir}/%{name}server
-%attr(664, root, games) %{_localstatedir}/lib/games/*
+%attr(2755, root, games) %{_gamesbindir}/%{name}
+%attr(2755, root, games) %{_gamesbindir}/%{name}server
+%config(noreplace) %attr(664, games, games) %{_localstatedir}/lib/games/*
 %{_datadir}/%{name}
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/hicolor/16x16/apps/%{name}.png

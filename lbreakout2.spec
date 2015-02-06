@@ -6,7 +6,7 @@
 Summary:	Breakout-style arcade game
 Name:		lbreakout2
 Version:	2.6.4
-Release:	1
+Release:	2
 License:	GPLv2
 Group:		Games/Arcade
 Url:		http://lgames.sourceforge.net/

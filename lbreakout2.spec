@@ -1,12 +1,12 @@
-%define levelsets	20120815
+%define levelsets	20160512
 
 # getting latest levelset ?
 %bcond_with	fetch_levels
 
 Summary:	Breakout-style arcade game
 Name:		lbreakout2
-Version:	2.6.4
-Release:	2
+Version:	2.6.5
+Release:	1
 License:	GPLv2
 Group:		Games/Arcade
 Url:		http://lgames.sourceforge.net/
@@ -68,7 +68,7 @@ install -D -m644 %{SOURCE6} %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.
 install -D -m644 %{SOURCE7} %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 # those docs are not wanted
-rm -r %{buildroot}/usr/doc
+rm -r %{buildroot}%{_docdir}
 
 # remove ugly default desktop file, use our own
 rm -r %{buildroot}%{_datadir}/applications/%{name}.desktop

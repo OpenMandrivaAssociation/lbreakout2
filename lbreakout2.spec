@@ -9,7 +9,7 @@ Version:	2.6.5
 Release:	1
 License:	GPLv2
 Group:		Games/Arcade
-Url:		http://lgames.sourceforge.net/
+Url:		https://lgames.sourceforge.net/
 Source0:	http://download.sourceforge.net/lgames/%{name}-%{version}.tar.gz
 Source1:	http://download.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.tar.gz
 Source5:	%{name}-16.png

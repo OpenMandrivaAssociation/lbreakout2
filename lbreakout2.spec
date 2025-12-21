@@ -15,6 +15,11 @@ Source1:	http://download.sourceforge.net/lgames/%{name}-levelsets-%{levelsets}.t
 Source5:	%{name}-16.png
 Source6:	%{name}-32.png
 Source7:	%{name}-48.png
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(SDL_mixer)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	texinfo
